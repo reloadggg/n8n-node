@@ -1,4 +1,6 @@
 import {
+	IAuthenticateGeneric,
+	ICredentialTestRequest,
 	ICredentialType,
 	INodeProperties,
 } from 'n8n-workflow';
@@ -22,4 +24,21 @@ export class ThreeZeroTwoAIApi implements ICredentialType {
 			description: 'The 302.ai API key for accessing OpenAI services',
 		},
 	];
+
+	authenticate: IAuthenticateGeneric = {
+		type: 'generic',
+		properties: {
+			headers: {
+				Authorization: '=Bearer {{$credentials.apiKey}}',
+			},
+		},
+	};
+
+	test: ICredentialTestRequest = {
+		request: {
+			baseURL: 'https://api.302.ai',
+			url: '/v1/models',
+			method: 'GET',
+		},
+	};
 }
