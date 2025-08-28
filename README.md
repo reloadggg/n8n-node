@@ -1,48 +1,78 @@
-![Banner image](https://user-images.githubusercontent.com/10284570/173569848-c624317f-42b1-45a6-ab09-f0ea3c247648.png)
+# @fengcch/n8n-nodes-302ai-chat
 
-# n8n-nodes-starter
+[![NPM Version](https://img.shields.io/npm/v/@fengcch/n8n-nodes-302ai-chat?style=flat-square)](https://www.npmjs.com/package/@fengcch/n8n-nodes-302ai-chat)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![N8N Compatibility](https://img.shields.io/badge/N8N-v1.x-blueviolet?style=flat-square)](https://n8n.io)
 
-This repo contains example nodes to help you get started building your own custom integrations for [n8n](https://n8n.io). It includes the node linter and other dependencies.
-
-To make your custom node available to the community, you must create it as an npm package, and [submit it to the npm registry](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry).
-
-If you would like your node to be available on n8n cloud you can also [submit your node for verification](https://docs.n8n.io/integrations/creating-nodes/deploy/submit-community-nodes/).
+This is an n8n community node for [302.AI](https://302.ai/) AI service integration.
 
 ## Prerequisites
 
-You need the following installed on your development machine:
+You need to have a valid API key from [302.AI](https://302.ai/) to use this node.
 
-* [git](https://git-scm.com/downloads)
-* Node.js and npm. Minimum version Node 20. You can find instructions on how to install both using nvm (Node Version Manager) for Linux, Mac, and WSL [here](https://github.com/nvm-sh/nvm). For Windows users, refer to Microsoft's guide to [Install NodeJS on Windows](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows).
-* Install n8n with:
-  ```
-  npm install n8n -g
-  ```
-* Recommended: follow n8n's guide to [set up your development environment](https://docs.n8n.io/integrations/creating-nodes/build/node-development-environment/).
+## Installation
 
-## Using this starter
+1.  Go to **Settings > Community Nodes** in your n8n instance.
+2.  Select **Install** and enter `@fengcch/n8n-nodes-302ai-chat` in the search box.
+3.  Click **Install** to add the node to your n8n instance.
 
-These are the basic steps for working with the starter. For detailed guidance on creating and publishing nodes, refer to the [documentation](https://docs.n8n.io/integrations/creating-nodes/).
+## Configuration
 
-1. [Generate a new repository](https://github.com/n8n-io/n8n-nodes-starter/generate) from this template repository.
-2. Clone your new repo:
-   ```
-   git clone https://github.com/<your organization>/<your-repo-name>.git
-   ```
-3. Run `npm i` to install dependencies.
-4. Open the project in your editor.
-5. Browse the examples in `/nodes` and `/credentials`. Modify the examples, or replace them with your own nodes.
-6. Update the `package.json` to match your details.
-7. Run `npm run lint` to check for errors or `npm run lintfix` to automatically fix errors when possible.
-8. Test your node locally. Refer to [Run your node locally](https://docs.n8n.io/integrations/creating-nodes/test/run-node-locally/) for guidance.
-9. Replace this README with documentation for your node. Use the [README_TEMPLATE](README_TEMPLATE.md) to get started.
-10. Update the LICENSE file to use your details.
-11. [Publish](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry) your package to npm.
+1.  In your n8n workflow, add the "302.AI" node.
+2.  In the "Credentials" section, click on **Create New**.
+3.  Give your credential a name.
+4.  Enter your API key from `302.AI` into the **API Key** field.
+5.  Click **Save** to create the credential.
 
-## More information
+## Usage
 
-Refer to our [documentation on creating nodes](https://docs.n8n.io/integrations/creating-nodes/) for detailed information on building your own nodes.
+### Chat Operation
+
+1.  **Model Name or ID**: Select from available 302.ai models
+2.  **System Prompt**: (Optional) Provide context for the AI
+3.  **Message**: Your input message
+4.  **Additional Fields**: Temperature, max tokens, etc.
+
+### Multimodal Support
+- Supports both text and image inputs in chat conversations
+- Compatible with vision-capable models for image understanding
+- **Image URL**: Optional field to include images in your conversation
+- **Supported formats**: HTTP/HTTPS image URLs or base64 encoded images
+- **Use cases**: Image analysis, visual question answering, content understanding from images
+
+## Output
+
+- **Standard response**: `json.response` contains the model's reply
+- **Error handling**: `json.error` for any API issues
+
+## Examples
+
+### Basic Chat Example
+```json
+{
+  "model": "gpt-3.5-turbo",
+  "message": "Hello, how can AI help with automation?",
+  "temperature": 0.7
+}
+```
+
+### Multimodal Example (Text + Image)
+```json
+{
+  "model": "gpt-4-vision-preview",
+  "message": "What do you see in this image?",
+  "imageUrl": "https://example.com/image.jpg",
+  "temperature": 0.5
+}
+```
+
+### Response Example
+```json
+{
+  "response": "AI can help with automation in many ways, including data processing, decision making, content generation, and workflow optimization..."
+}
+```
 
 ## License
 
-[MIT](https://github.com/n8n-io/n8n-nodes-starter/blob/master/LICENSE.md)
+[MIT](LICENSE)

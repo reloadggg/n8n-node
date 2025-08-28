@@ -1,19 +1,26 @@
 {
-  "name": "n8n-nodes-<...>",
-  "version": "0.1.0",
-  "description": "",
+  "name": "@fengcch/n8n-nodes-302ai-chat",
+  "version": "1.1.0",
+  "description": "n8n community node for 302.ai AI service integration",
   "keywords": [
-    "n8n-community-node-package"
+    "n8n-community-node-package",
+    "302ai",
+    "ai",
+    "chat",
+    "llm"
   ],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/reloadggg/n8n-node",
   "author": {
-    "name": "",
-    "email": ""
+    "name": "302.AI",
+    "url": "https://302.ai"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/<...>/n8n-nodes-<...>.git"
+    "url": "git+https://github.com/reloadggg/n8n-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/reloadggg/n8n-node/issues"
   },
   "engines": {
     "node": ">=20.15"
@@ -33,12 +40,10 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credentials/ExampleCredentialsApi.credentials.js",
-      "dist/credentials/HttpBinApi.credentials.js"
+      "dist/credentials/ThreeZeroTwoAIApi.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/ExampleNode/ExampleNode.node.js",
-      "dist/nodes/HttpBin/HttpBin.node.js"
+      "dist/nodes/ThreeZeroTwoAI/ThreeZeroTwoAi.node.js"
     ]
   },
   "devDependencies": {
@@ -51,5 +56,8 @@
   },
   "peerDependencies": {
     "n8n-workflow": "*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
