@@ -59,7 +59,7 @@ You need to have a valid API key from [302.AI](https://302.ai/) to use this node
 ### Multimodal Example (Text + Image)
 ```json
 {
-  "model": "gpt-5",
+  "model": "gpt-5.1",
   "message": "What do you see in this image?",
   "imageUrl": "https://example.com/image.jpg",
   "temperature": 0.5
